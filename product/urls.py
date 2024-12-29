@@ -13,4 +13,5 @@ router.register('vendor', VendorViewSet, basename='vendor')
 router.register('products', ProductViewSet, basename='product')
 urlpatterns = [
     path('analytics/', AnalyticsAPIView.as_view(), name='analytics'),
+    path('vendor-analytics/', VendorViewSet.as_view({'get': 'vendor_analytics'}), name='vendor_analytics'),
 ] + router.urls
