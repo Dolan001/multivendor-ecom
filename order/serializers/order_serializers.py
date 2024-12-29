@@ -76,5 +76,5 @@ class OrderSerializer(serializers.ModelSerializer):
                     product=product_cart_item.product,
                     quantity=product_cart_item.quantity,
                 )
-            # product_cart.delete()
+            product_cart.delete()
         return order
