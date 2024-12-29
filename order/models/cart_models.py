@@ -4,9 +4,11 @@ from django.db import models, transaction
 from django.utils.translation import gettext_lazy as _
 
 from core.models import BaseModel
+from product.models import Vendor
 
 
 class Cart(BaseModel):
+    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, related_name='cart_product_vendor', null=True)
     customer = models.ForeignKey(
         "authentications.User", related_name="customer_cart", on_delete=models.CASCADE
     )

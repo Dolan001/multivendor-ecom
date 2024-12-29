@@ -22,11 +22,12 @@ class CartSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         cart_products = validated_data.get("carts")
+        vendor = validated_data.get("vendor")
         print(cart_products)
         customer = self.context.get("request").user
 
         cart, _ = Cart.objects.get_or_create(
-            customer=customer
+            customer=customer, vendor=vendor
         )
         product_amount = cart.product_amount
         discount = cart.discount
